@@ -1,6 +1,14 @@
-import React from 'react'
+import  React, {useState} from 'react'
 
 export default function MainPage() {
+  const[date,setDate]=useState(null);
+  const[mainCurrency,setMainCurrency]=useState("");
+  const[exchangeCurrency,setExchangeCurrency]=useState("");
+  const[amount,setAmount]=useState(0);
+  
+  const handleSubmit=(e)=>{e.preventDefault();
+  console.log(date,setMainCurrency,exchangeCurrency,amount);};
+
   return (
     <div>
         <h1 className="text-5xl lg:mx-32 font-bold text-blue-700">
@@ -11,19 +19,33 @@ export default function MainPage() {
           Say goodbye to confusion and hello to seamless currency conversions, anytime, anywhere.</p>
 
 <div className="mt-5 flex items-center justify-center flex-col"><section className="w-full lg:w-1/2">
-  <form>
+  <form onSubmit={handleSubmit}>
   <div class="mb-5">
-    <label for="Date" className=" block mb-2 text-xl font-medium text-white-900 opacity-90 dark:text-white">Date</label>
-    <input type="Date" id="" className="shadow-sm bg-gray-50 border opacity-80 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="" required />
+    <label htmlFor={Date} className=" block mb-2 text-xl font-medium text-white-900 opacity-90 dark:text-white">Date</label>
+    <input onChange={(e)=>setDate(e.target.value)} type="Date" id={date} name={date} className="shadow-sm bg-gray-50 border opacity-80 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="" required />
   </div>
 
   <div class="mb-5">
-    <label for="Main Currency" className=" block mb-2 text-xl font-medium text-white-900 opacity-90 dark:text-white">Main Currency</label>
-    <select name="" id="" className="shadow-sm bg-gray-50 border opacity-80 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" >
-    <Option value=""> Select the Currency </Option>
+    <label htmlFor={mainCurrency} className=" block mb-2 text-xl font-medium text-white-900 opacity-90 dark:text-white">Main Currency</label>
+    <select onChange={(e)=>setMainCurrency(e.target.value)} name={mainCurrency} id={mainCurrency} value={mainCurrency} className="shadow-sm bg-gray-50 border opacity-80 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" >
+    <option value="">Select Main Currency</option>
     </select>
     
   </div>
+
+  <div class="mb-5">
+    <label htmlFor={exchangeCurrency} className=" block mb-2 text-xl font-medium text-white-900 opacity-90 dark:text-white">Exchange Currency</label>
+    <select onChange={(e)=>setExchangeCurrency(e.target.value)} name={exchangeCurrency} id={exchangeCurrency} value={exchangeCurrency} className="shadow-sm bg-gray-50 border opacity-80 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" >
+    <option value="">Select Exchange Currency</option>
+    </select>
+    
+  </div>
+
+  <div class="mb-5">
+    <label htmlFor={amount} className=" block mb-2 text-xl font-medium text-white-900 opacity-90 dark:text-white">Amount</label>
+    <input onChange={(e)=>setAmount(e.target.value)} type="Amount" id={amount} name={amount} className="shadow-sm bg-gray-50 border opacity-80 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Amount of Main Currency" required />
+  </div>
+  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">Exchange</button>
 
   </form>
 </section>
