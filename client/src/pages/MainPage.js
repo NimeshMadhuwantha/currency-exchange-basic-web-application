@@ -1,5 +1,5 @@
-import  React, {useState} from 'react'
-
+import  React, {useEffect, useState} from 'react'
+import axios from "axios";
 export default function MainPage() {
   const[date,setDate]=useState(null);
   const[mainCurrency,setMainCurrency]=useState("");
@@ -8,6 +8,17 @@ export default function MainPage() {
   
   const handleSubmit=(e)=>{e.preventDefault();
   console.log(date,setMainCurrency,exchangeCurrency,amount);};
+
+  useEffect(()=>{
+    const getCurrencyNames=async()=>{
+      try{
+        const responce=await axios.get(
+          "http://localhost:5000/getAllCurrencies");
+
+        }
+      }
+    }
+  })
 
   return (
     <div>
