@@ -5,6 +5,7 @@ export default function MainPage() {
   const[mainCurrency,setMainCurrency]=useState("");
   const[exchangeCurrency,setExchangeCurrency]=useState("");
   const[amount,setAmount]=useState(0);
+  const[CurrencyNames,setCurrencyNames]=useState([]);
   
   const handleSubmit=(e)=>{e.preventDefault();
   console.log(date,setMainCurrency,exchangeCurrency,amount);};
@@ -13,12 +14,15 @@ export default function MainPage() {
     const getCurrencyNames=async()=>{
       try{
         const responce=await axios.get(
-          "http://localhost:5000/getAllCurrencies");
+          "http://localhost:5000/getAllCurrencies"
+          );
+          setCurrencyNames(responce.data);
 
+        } catch(err) {
+          console.error(err);
         }
-      }
-    }
-  })
+      }; getCurrencyNames();
+    },[]);
 
   return (
     <div>
