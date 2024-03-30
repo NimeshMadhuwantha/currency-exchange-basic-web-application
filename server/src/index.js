@@ -6,7 +6,7 @@ const app=express();
 app.use(express.json());
 app.use(cors());
 app.get("/getAllCurrencies",async (req,res)=>{
-    const nameURL ='https://docs.openexchangerates.org/reference/currencies-json?app_id=4efab6a7bb934efea57000511c75098a';
+    const nameURL ='https://openexchangerates.org/api/currencies.json?app_id=f17b75b11e4c47f1b1d1154941b6292d';
 
 
 
@@ -21,5 +21,5 @@ app.get("/getAllCurrencies",async (req,res)=>{
 })
 
 app.listen(5000,()=>{
-    console.log("SERVER STARTED0");
+    console.log("SERVER STARTED");
 });
